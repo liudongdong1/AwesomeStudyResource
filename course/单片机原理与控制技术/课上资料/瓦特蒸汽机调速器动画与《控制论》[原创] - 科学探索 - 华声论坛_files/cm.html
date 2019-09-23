@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0086)http://static.bshare.cn/cm.html?cid=1CHPhPTFBBB9IVvD30LY&m=17,16,3,8,10,11,12,13,14,15 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Insert title here</title>
+<style type="text/css"></style></head>
+<body>
+
+<script type="text/javascript">
+	(function(){
+		var docBody = document.body ,doc = document;
+		var B={
+			parseOptions:function(src){
+				 var options = {}, g, f, c, a, e;
+			        g = /\?(.*)|#(.*)/.exec(src);
+		            if (g) {
+		            	g = g[0].slice(1).replace("+", " ").split(/[&;]/g);
+				        for (f = 0; f < g.length; f++) {
+				            c = g[f].split("=");
+				            a = decodeURIComponent(c[0]);
+				            e = "";
+				            if (c.length != 1) e = decodeURIComponent(c[1]);
+				            options[a] = e;
+				        }
+		            }
+			        return options;
+			},
+			createElem: function(eTag, eId, eClass, eStyle, eText, eUrl) {
+				var newEle = doc.createElement(eTag);
+				if (eTag == "a") {
+					newEle.href = eUrl || "javascript:;";
+					newEle.target = "_blank";
+				}
+				if (eId) newEle.id = eId;
+				if (eClass) newEle.className = eClass;
+				if (eStyle) newEle.style.cssText = eStyle;
+				if (eText) newEle.innerHTML = eText;
+				return newEle;
+			},
+			loadImg:function (src) {
+				var _cmimg = B.createElem("img", "", "", "display:none;");
+				_cmimg.src = src;
+				docBody.appendChild(_cmimg);
+			}
+		}
+		var cmData = B.parseOptions(window.location.href);
+		var cid = cmData.cid, m = cmData.m, _cmurl,ids, id, i, len ;
+		
+		ids = m.toString().split(",");
+		len = ids.length;
+		for (i = 0; i < len; ++i) {
+			id = +ids[i];
+			// NONE(0), BX(1), UQ(2), ALLYES(3), TURN(4) PINYOU(5);
+			if (id == 3) {
+				_cmurl = "http://cm.allyes.com/pixel?allyes_dspid=182&allyes_cm&extra=" + cid;
+			} else if (id == 4) {
+				_cmurl = "http://d.turn.com/r/dd/id/L2NzaWQvMS9jaWQvMjY1Nzg5NDAvdC8y/dpuid/" + cid;
+			} else if (id == 8) {
+				_cmurl = "http://cms.tanx.com/t.gif?id=30875969&extendata=" + cid;
+			} else if (id == 9) {
+				_cmurl = "http://cm.yigao.com/sspcm/cm?dsp_id=80808&dsp_uid=" + cid;
+			} else if (id == 10) {
+				_cmurl = "http://mega.mlt01.com/mmpcm.htm?id=1038&cid=" + cid;
+			} else if (id == 12) {
+				_cmurl = "http://cm.e.qq.com/cm.fcg?a=2954738066&j=iclick&time=" + new Date().getTime();
+			} else if (id == 13) {
+				_cmurl = "http://cm.fastapi.net/?dspid=100016&hparam=c&dspuid=" + cid;
+			} else if (id == 14) {
+				_cmurl = "http://t.go.sohu.com/cm.gif?ver=1&mid=10030&uid=" + cid;
+			} else if (id == 15) {
+                _cmurl = "http://cm.pos.baidu.com/pixel?dspid=6410560&ext_data=" + cid;
+			} else if (id == 16) {
+				_cmurl = "http://ckm.iqiyi.com/pixel?qiyi_nid=71000033&qiyi_no_sc";
+			} else if (id == 17) {
+				_cmurl = "http://cm02.optimix.asia/cookies?client_id=bshare";
+			} else if (id == 18) {
+				_cmurl = "http://v.admaster.com.cn/iclick/callback?c=" + cid;
+			} else {
+				continue;
+			}
+			B.loadImg(_cmurl);
+		}
+	})();
+	</script><img src="cookies" style="display: none;"><img src="pixel" style="display: none;"><img src="http://cm.allyes.com/pixel?allyes_dspid=182&allyes_cm&extra=1CHPhPTFBBB9IVvD30LY" width="0" height="0" style="display: none !important; visibility: hidden !important; opacity: 0 !important; background-position: 0px 0px;"><img src="t.gif" width="0" height="0" style="display: none !important; visibility: hidden !important; opacity: 0 !important; background-position: 0px 0px;"><img src="mmpcm.htm" style="display: none;"><img src="cm.fcg" style="display: none;"><img src="http://cm.fastapi.net/?dspid=100016&hparam=c&dspuid=1CHPhPTFBBB9IVvD30LY" width="0" height="0" style="display: none !important; visibility: hidden !important; opacity: 0 !important; background-position: 0px 0px;"><img src="cm.gif" style="display: none;"><img src="pixel(1)" style="display: none;">
+
+</body></html>

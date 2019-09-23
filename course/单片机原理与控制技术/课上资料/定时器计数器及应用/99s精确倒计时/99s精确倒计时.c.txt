@@ -1,0 +1,37 @@
+#include<reg52.h>
+#define uchar unsigned char
+#define uint unsigned int
+char i;
+char ctime=99;
+uchar code led[]={0xc0,0xf9,0xa4,0xb0,0x99,0x92,0x82,0xf8,0x80,0x90};
+void main()
+{
+  TMOD=0X01;
+  TH0=(65536-45872)/256;
+  TL0=(65536-45872)%256;
+  EA=1;
+  ET0=1;
+  TR0=1;
+  while(1)
+  {
+   P0=led[ctime/10];
+   P2=led[ctime%10];
+ 
+  }
+
+}
+   void time() interrupt 1
+{
+  TH0=(65536-45872)/256;
+  TL0=(65536-45872)%256;
+  i++;
+  if(i==20)
+  {
+   i=0;
+   ctime--;
+   if(ctime<0)
+   {
+    ctime=99;
+  }
+ }  
+}

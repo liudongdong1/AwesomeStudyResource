@@ -1,0 +1,74 @@
+body{ font-size:12px; font-family:宋体; color:#333; line-height:24px; margin:0 auto;}
+ul,li,p,span,img,p{ list-style:none; padding:0; margin:0; border:none; font-style:normal; list-style:none}
+a{ color:#333;}
+a:link{ text-decoration:none}
+a:visited{ text-decoration:none}
+
+.pic_n1{ width:578px; float:left; overflow:hidden; height:248px; border:1px solid #e1e1e1; background-color:#fff;}
+
+.pic_n1 .xz_ztk{ width:178px; height:228px; overflow:hidden; border:1px solid #e1e1e1; display:block; position:relative; top:10px; left:10px; float:left;}
+.pic_n1 .xz_ztk .pic_zt{ width:178px; height:228px; display:block; position:absolute; overflow:hidden; z-index:1; left:0; top:0;}
+.pic_n1 .xz_ztk ul.number{ width:72px; height:12px; display:block; position:absolute; z-index:10; right:0; bottom:5px;}
+.pic_n1 .xz_ztk ul.number li{ float:left; overflow:hidden; line-height:12px; font-size:12px; color:#333; background-color:#fff; padding:0 4px; margin-right:4px;}
+.pic_n1 .xz_ztk ul.number li a{ color:#333;}
+.pic_n1 .xz_ztk ul.number li a:link{ text-decoration:none;}
+.pic_n1 .xz_ztk ul.number li.now{ float:left; overflow:hidden; line-height:12px; font-size:12px; color:#fff; background-color:#dc0e1b; padding:0 4px;}
+.pic_n1 .xz_ztk ul.number li.now a{ color:#fff;}
+
+.nivo-controlNav{ width:72px; height:12px; display:block; position:absolute; z-index:10; right:0; bottom:5px;padding:0;}
+.nivo-controlNav a{float:left; overflow:hidden; line-height:12px; font-size:12px; color:#333; background-color:#fff; padding:0 4px;margin-right:3px;}
+.nivo-controlNav a:link{ text-decoration:none;}
+.nivo-controlNav .active{ float:left; overflow:hidden; line-height:12px; font-size:12px; color:#fff; background-color:#dc0e1b; padding:0 4px;}
+.nivo-controlNav .active a{ color:#fff;}
+
+
+.pic_n1 .pic_center{ width:220px; float:left; overflow:hidden; padding:10px 0 0 10px;}
+.pic_n1 .pic_ins{ width:100px; float:left; overflow:hidden; padding-bottom:12px; margin-left:10px;}
+.pic_n1 .pic_ins img{ float:left; overflow:hidden; border:1px solid #e1e1e1;}
+.pic_n1 .pic_ins p{ width:100px; float:left; overflow:hidden; text-align:center; font-size:12px; color:#333; line-height:12px; height:12px; padding-top:6px;}
+.pic_n1 .pic_ins p a{ color:#333;}
+.pic_n1 .pic_ins p a:link{ text-decoration:none;}
+
+.pic_n1 .xx_shu{ width:1px; height:229px; float:left; overflow:hidden; background:url(../images/shu_d.jpg) no-repeat; margin:8px 0 0 8px; _margin:8px 0 0 4px;}
+
+.pic_n1 .r_s_k{ width:146px; float:left; overflow:hidden; padding:0 0 0 8px;}
+.pic_n1 .r_s_k p.bt_r_h{ width:146px; float:left; overflow:hidden; font-size:14px; color:#003b83; font-weight:bold; padding-top:4px;}
+.pic_n1 .r_s_k p.nr_r_h{ width:146px; float:left; overflow:hidden; line-height:22px; height:22px;}
+.pic_n1 .r_s_k p.nr_r_h a:hover{ color:#c00;}
+.pic_n1 .r_s_k .heng_d{ width:139px; height:1px; float:left; overflow:hidden; background:url(../images/heng_d.jpg) no-repeat; margin:8px 0 2px 0;}
+
+
+.wenzi_a{ width:300px; float:left; overflow:hidden; height:265px;}
+.wenzi_a .mryt{ width:300px; float:left; overflow:hidden;}
+.wenzi_a .mryt .mryt_bt{ width:300px; height:27px; float:left; overflow:hidden; line-height:27px; background:url(../images/mryt_bj.jpg) no-repeat;}
+.wenzi_a .mryt .mryt_bt p{ float:left; overflow:hidden; width:70px; text-align:center;}
+
+.wenzi_a .mryt .mryt_nr{ width:298px; float:left; overflow:hidden; height:77px; border:1px solid #dadada; border-top:0;}
+.wenzi_a .mryt .mryt_nr ul.mryt_f{ width:260px; float:left; overflow:hidden; padding:2px 0 0 15px; font-size:14px;}
+.wenzi_a .mryt .mryt_nr ul.mryt_f li{ width:248px; float:left; overflow:hidden; padding:0 0 0 12px; background:url(../images/red_d.jpg) 0 center no-repeat; color:#ff0000; height:24px;}
+.wenzi_a .mryt .mryt_nr ul.mryt_f li a{ color:#ff0000;}
+.wenzi_a .mryt .mryt_nr ul.mryt_f li.blue{ width:248px; float:left; overflow:hidden; padding:0 0 0 12px; background:url(../images/bule_d.jpg) 0 center no-repeat; color:#0000ff;}
+.wenzi_a .mryt .mryt_nr ul.mryt_f li.blue a{ color:#0000ff;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,126 @@
+/*
+Editor Offical Style for voc!(R)
+URL: https://vip.voc.com.cn
+(C) 2001-2007 Voice Of China
+<style type="text/css">
+*/
+/* Editor */
+.editor	{
+font-family: Arial, Helvetica, sans-serif;
+background: #FFE6B0;
+border: 1px solid #FFB227;
+border-bottom: 1px solid #FFB227;
+}
+.editor_line {
+border-top:1px solid #FFB227;
+}
+.editor_switcher {
+font-family: Arial, Helvetica, sans-serif;
+position: relative;
+top: 1px;
+border-bottom: 1px solid #FFB227;
+background: #FFE6B0;
+margin-left: 10px;
+vertical-align: middle;
+cursor:pointer;
+}
+.editor_switcher_highlight {
+font-family: Arial, Helvetica, sans-serif;
+position: relative;
+top: 1px;
+border-bottom: 1px solid #FFFFFF;
+background: #FFFFFF;
+margin-left: 10px;
+vertical-align: middle;
+font-weight: bold;
+cursor:pointer;
+}
+.editor_text {
+font: 14px ËÎÌו;
+border: 1px solid #FFB227;
+border-top: 0px;
+background: #FFFFFF;
+}
+.editor_text textarea {
+border-style: none;
+border-color: inherit;
+border-width: 0px;
+overflow: auto;
+padding: 4px;
+word-break: break-all;
+behavior: url(#default#userdata);
+background:#fff url(/images/hui_21per.gif) no-repeat center center;
+font-size:14px;
+}
+.editor_button {
+background: #FFE6B0;
+border: 1px solid #FFB227;
+border-top: 1px solid #FFB227;
+position: relative;
+top: -1px;
+margin-bottom: 6px;
+}
+.editor_textexpand {
+float: left;
+position: relative;
+top: -3px;
+border-top: 0px;
+}
+.editor_buttonnormal {
+background: #FFE6B0;
+color: #000000;
+padding: 1px;
+border: none;
+}
+.editor_buttondown, .editor_buttonhover, .editor_buttonselected {
+background: #FFE6B0;
+color: #000000;
+padding: 0px;
+border: 1px solid #FFB227;
+}
+.editor_menunormal, .editor_menuhover {
+font: 11px tahoma;
+height: 18px;
+padding: 0px 3px 0px 3px;
+white-space: nowrap;
+overflow: hidden;
+background: #FFFFFF;
+color: #000000;
+}
+.editor_menunormal {
+border-right: 1px solid #FFFFFF;
+}
+.editor_menuhover {
+border-right: 1px solid #FFB227;
+}
+.editor_menuhover div, .editor_menunormal div {
+background: #FFFFFF;
+color: #000000;
+}
+.editor_colormenunormal {
+border-right: 1px solid #FFFFFF;
+}
+.editor_colormenuhover {
+border-right: 1px solid #FFB227;
+}
+.editor_colornormal {
+padding: 2px;
+font-size: 1px;
+background-color: #ffffff;
+}
+.editor_colorhover {
+background: #FFB227;
+white-space: nowrap;
+padding: 2px;
+font-size: 1px;
+}
+.editor_colornormal div {
+width: 10px;
+height: 10px;
+border: 1px solid #92A05A;
+}
+.editor_colorhover div {
+width: 10px;
+height: 10px;
+border: 1px solid #FFB227;
+}

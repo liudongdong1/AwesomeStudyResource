@@ -1,0 +1,99 @@
+.ops{height: 80px;width: 450px;;margin: 10px auto 0px;text-align:center;}
+.zhuwei-hf,.zhuwei-sc{
+border: none;
+width: 134px; 
+height: 64px; 
+display: block;
+float:left;
+margin-left:8px;
+}
+.btn-zhuwei_no,.btn-zhuwei{
+color:#3D3D3D;
+font-size: 18px;
+height: 50px;
+width: 108px;
+padding: 14px 0px 0px 26px;
+text-align:center;
+background: url(http://bbs.voc.com.cn/app/zhuwei/images/zw1.gif) no-repeat left top; 
+text-decoration:none; 
+font-family: Arial;
+display: block;
+float:left;
+cursor: pointer;
+}
+.btn-zhuwei_no{
+background: url(http://bbs.voc.com.cn/app/zhuwei/images/wyzw1.gif) no-repeat left top; 
+}
+.weiwang-popup{
+background: white;
+border: 7px solid #E9E9E9;
+display: none;
+left: 0px;
+overflow: hidden;
+position: absolute;
+top: 0px;
+width: 647px;
+z-index: 10001;
+}
+.weiwang-popup .close{
+background: url(T1HA8wXlFmXXXXXXXX-141-100.gif) no-repeat -6px -60px;
+cursor: pointer;
+height: 10px;
+position: absolute;
+right: 10px;
+top: 10px;
+width: 10px;
+z-index: 10;
+}
+
+a.btn-zhuwei_no:link {
+	background: url(http://bbs.voc.com.cn/app/zhuwei/images/wyzw1.gif) no-repeat left top;text-decoration:none; 
+}
+a.btn-zhuwei_no:visited {
+	background: url(http://bbs.voc.com.cn/app/zhuwei/images/wyzw1.gif) no-repeat left top;text-decoration:none; 
+}
+a.btn-zhuwei_no:active {
+	background: url(http://bbs.voc.com.cn/app/zhuwei/images/wyzw1.gif) no-repeat left top; text-decoration:none; 
+}
+ a.btn-zhuwei_no:hover {
+	background: url(http://bbs.voc.com.cn/app/zhuwei/images/wyzw2.gif) no-repeat left top; text-decoration:none; 
+}
+
+a.btn-zhuwei:link {
+	background: url(http://bbs.voc.com.cn/app/zhuwei/images/zw1.gif) no-repeat left top;text-decoration:none; 
+}
+a.btn-zhuwei:visited {
+	background: url(http://bbs.voc.com.cn/app/zhuwei/images/zw1.gif) no-repeat left top;text-decoration:none; 
+}
+a.btn-zhuwei:active {
+	background: url(http://bbs.voc.com.cn/app/zhuwei/images/zw1.gif) no-repeat left top; text-decoration:none; 
+}
+ a.btn-zhuwei:hover {
+	background: url(http://bbs.voc.com.cn/app/zhuwei/images/zw2.gif) no-repeat left top; text-decoration:none; 
+}
+
+a.zhuwei-hf:link {
+	background: url(http://bbs.voc.com.cn/app/zhuwei/images/hf1.gif) no-repeat left top; text-decoration:none; 
+}
+a.zhuwei-hf:visited {
+	background: url(http://bbs.voc.com.cn/app/zhuwei/images/hf1.gif) no-repeat left top; text-decoration:none; 
+}
+a.zhuwei-hf:active {
+	background: url(http://bbs.voc.com.cn/app/zhuwei/images/hf1.gif) no-repeat left top; text-decoration:none; 
+}
+ a.zhuwei-hf:hover {
+	background: url(http://bbs.voc.com.cn/app/zhuwei/images/hf2.gif) no-repeat left top; text-decoration:none; 
+}
+
+a.zhuwei-sc:link {
+	background: url(http://bbs.voc.com.cn/app/zhuwei/images/dj1.gif) no-repeat left top; text-decoration:none; 
+}
+a.zhuwei-sc:visited {
+	background: url(http://bbs.voc.com.cn/app/zhuwei/images/dj1.gif) no-repeat left top;text-decoration:none; 
+}
+a.zhuwei-sc:active {
+	background: url(http://bbs.voc.com.cn/app/zhuwei/images/dj1.gif) no-repeat left top;text-decoration:none; 
+}
+ a.zhuwei-sc:hover {
+	background: url(http://bbs.voc.com.cn/app/zhuwei/images/dj2.gif) no-repeat left top;text-decoration:none; 
+}

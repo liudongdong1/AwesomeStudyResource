@@ -1,0 +1,97 @@
+A51 MACRO ASSEMBLER  STEP_MOTOR                                                           08/07/2006 21:27:48 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.00
+OBJECT MODULE PLACED IN Step Motor.OBJ
+ASSEMBLER INVOKED BY: e:\Program Files\Keil\C51\BIN\A51.EXE Step Motor.asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG             00H
+0000 900061            2     START:  MOV             DPTR,#TAB1
+0003 7803              3                     MOV             R0,#03
+0005 7C00              4                     MOV             R4,#0
+0007 759003            5                     MOV             P1,#3
+                       6     
+000A 8890              7     WAIT:   MOV             P1,R0                   ;初始角度,0度
+000C 7580FF            8                     MOV             P0,#0FFH
+000F 308008            9                     JNB             P0.0,POS                ;判断键盘状态
+0012 30810E           10                     JNB             P0.1,NEG
+0015 80F3             11                     SJMP    WAIT
+                      12     
+0017 208109           13     JUST:   JB              P0.1,NEG                ;首次按键处理
+001A EC               14     POS:    MOV             A,R4                    ;正转9度
+001B 93               15                     MOVC    A,@A+DPTR
+001C F590             16                     MOV             P1,A
+001E 1154             17                     ACALL   DELAY
+0020 0C               18                     INC             R4
+0021 012D             19                     AJMP    KEY
+0023 7C06             20     NEG:    MOV             R4,#6                   ;反转9度
+0025 EC               21                     MOV             A,R4
+0026 93               22                     MOVC    A,@A+DPTR
+0027 F590             23                     MOV             P1,A
+0029 1154             24                     ACALL   DELAY
+002B 012D             25                     AJMP    KEY
+                      26     
+                      27                                             
+002D 758003           28     KEY:    MOV             P0,#03H                 ;读键盘情况
+0030 E590             29                     MOV             A,P1                            
+0032 20800E           30                     JB              P0.0,FZ1
+0035 BC0802           31                     CJNE    R4,#8,LOOPZ             ;是结束标志
+0038 7C00             32                     MOV             R4,#0
+003A EC               33     LOOPZ:  MOV             A,R4
+003B 93               34                     MOVC    A,@A+DPTR
+003C F590             35                     MOV             P1,A                    ;输出控制脉冲
+003E 1154             36                     ACALL   DELAY                   ;程序延时
+0040 0C               37                     INC             R4                              ;地址加1
+0041 012D             38                     AJMP    KEY
+0043 2081E7           39     FZ1:    JB              P0.1,KEY
+0046 BCFF02           40                     CJNE    R4,#255,LOOPF   ;是结束标志
+0049 7C07             41                     MOV             R4,#7
+004B 1C               42     LOOPF:  DEC             R4
+004C EC               43                     MOV             A,R4
+004D 93               44                     MOVC    A,@A+DPTR
+004E F590             45                     MOV             P1,A                    ;输出控制脉冲
+0050 1154             46                     ACALL   DELAY                   ;程序延时
+0052 012D             47                     AJMP    KEY
+                      48     
+0054 7E05             49     DELAY:  MOV             R6,#5
+0056 7D80             50     DD1:    MOV             R5,#080H
+0058 7F00             51     DD2:    MOV             R7,#0
+005A DFFE             52     DD3:    DJNZ    R7,DD3
+005C DDFA             53                     DJNZ    R5,DD2
+005E DEF6             54                     DJNZ    R6,DD1
+0060 22               55                     RET
+0061 0206040C         56     TAB1:   DB              02H,06H,04H,0CH
+0065 08090103         57                     DB              08H,09H,01H,03H ;正转模型资料
+                      58                     END
+A51 MACRO ASSEMBLER  STEP_MOTOR                                                           08/07/2006 21:27:48 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DD1. . . . . . . .  C ADDR   0056H   A   
+DD2. . . . . . . .  C ADDR   0058H   A   
+DD3. . . . . . . .  C ADDR   005AH   A   
+DELAY. . . . . . .  C ADDR   0054H   A   
+FZ1. . . . . . . .  C ADDR   0043H   A   
+JUST . . . . . . .  C ADDR   0017H   A   
+KEY. . . . . . . .  C ADDR   002DH   A   
+LOOPF. . . . . . .  C ADDR   004BH   A   
+LOOPZ. . . . . . .  C ADDR   003AH   A   
+NEG. . . . . . . .  C ADDR   0023H   A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+POS. . . . . . . .  C ADDR   001AH   A   
+START. . . . . . .  C ADDR   0000H   A   
+TAB1 . . . . . . .  C ADDR   0061H   A   
+WAIT . . . . . . .  C ADDR   000AH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

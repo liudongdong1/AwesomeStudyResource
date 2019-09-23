@@ -1,0 +1,63 @@
+SECOND	EQU		30H
+TCOUNT	EQU		31H
+KCOUNT	EQU		32H
+KEY		BIT		P3.7
+		ORG		00H
+		SJMP	START
+		ORG		0BH
+		LJMP	INT_T0
+START:	MOV		DPTR,#TABLE
+		MOV		P0,#3FH
+		MOV		P2,#3FH		   ;开始,数码管显示"00"
+		MOV		SECOND,#00H
+		MOV		TCOUNT,#00H
+		MOV		KCOUNT,#00H
+		MOV		TMOD,#01H	   ;定时器0工作在方式1
+		MOV		TL0,#(65536-50000)/256
+		MOV		TH0,#(65536-50000) MOD	256
+	K1:	JB		KEY,$		   ;等待按键
+		LCALL	DELAY
+		JB		KEY,$
+		MOV		A,KCOUNT
+		CJNE	A,#00H,K2	   ;判断按键次数
+		SETB	TR0			   ;第1次按键,启动定时器
+		MOV		IE,#82H
+		JNB		KEY,$
+		INC		KCOUNT		   ;按键抬起,按键次数值加1
+		LJMP	K1
+	K2:	CJNE	A,#01H,K3
+		CLR		TR0			   ;第2次按键,关闭定时器
+		MOV		IE,#00H
+		JNB		KEY,$
+		INC		KCOUNT		   ;按键抬起,按键次数值加1
+		LJMP	K1
+	K3:	CJNE	A,#02H,K1	   ;第3次按键,返回初始状态
+		JNB		KEY,$
+		LJMP	START
+INT_T0:	MOV 	TH0,#(65536-50000)/256
+		MOV 	TL0,#(65536-50000) MOD 256
+		INC		TCOUNT
+		MOV		A,TCOUNT
+		CJNE	A,#2,I2		   ;是否计够0.1秒
+		MOV		TCOUNT,#00H	
+		INC		SECOND
+		MOV		A,SECOND
+		CJNE	A,#100,I1	   ;是否计够10秒
+		MOV		SECOND,#00H
+	I1:	MOV		A,SECOND
+		MOV		B,#10
+		DIV		AB
+		MOVC	A,@A+DPTR	   ;显示时间
+		MOV		P0,A
+		MOV		A,B
+		MOVC	A,@A+DPTR
+		MOV		P2,A
+	I2:	RETI				
+TABLE: 	DB 		3FH,06H,5BH,4FH,66H
+		DB		6DH,7DH,07H,7FH,6FH
+DELAY:	MOV		R6,#20
+D1:		MOV		R7,#250
+		DJNZ	R7,$
+		DJNZ	R6,D1
+		RET
+		END	

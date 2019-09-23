@@ -1,0 +1,112 @@
+A51 MACRO ASSEMBLER  99S_CLOCK                                                            07/28/2006 17:25:02 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.00
+OBJECT MODULE PLACED IN 99s Clock.OBJ
+ASSEMBLER INVOKED BY: e:\Program Files\Keil\C51\BIN\A51.EXE 99s Clock.asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+  0030                 1     SECOND  EQU             30H
+  0031                 2     TCOUNT  EQU             31H
+  0032                 3     KCOUNT  EQU             32H
+  00B7                 4     KEY             BIT             P3.7
+0000                   5                     ORG             00H
+0000 800C              6                     SJMP    START
+000B                   7                     ORG             0BH
+000B 02005D            8                     LJMP    INT_T0
+000E 900086            9     START:  MOV             DPTR,#TABLE
+0011 75803F           10                     MOV             P0,#3FH
+0014 75A03F           11                     MOV             P2,#3FH
+0017 753000           12                     MOV             SECOND,#00H
+001A 753100           13                     MOV             TCOUNT,#00H
+001D 753200           14                     MOV             KCOUNT,#00H
+0020 758901           15                     MOV             TMOD,#01H
+0023 758A3C           16                     MOV             TL0,#(65536-50000)/256
+0026 758CB0           17                     MOV             TH0,#(65536-50000) MOD  256
+0029 20B7FD           18             K1:     JB              KEY,$
+002C 120090           19                     LCALL   DELAY
+002F 20B7FD           20                     JB              KEY,$
+0032 E532             21                     MOV             A,KCOUNT
+0034 B4000D           22                     CJNE    A,#00H,K2
+0037 D28C             23                     SETB    TR0
+0039 75A882           24                     MOV             IE,#82H
+003C 30B7FD           25                     JNB             KEY,$
+003F 0532             26                     INC             KCOUNT  
+0041 020029           27                     LJMP    K1
+0044 B4010D           28             K2:     CJNE    A,#01H,K3
+0047 C28C             29                     CLR             TR0
+0049 75A800           30                     MOV             IE,#00H
+004C 30B7FD           31                     JNB             KEY,$
+004F 0532             32                     INC             KCOUNT          
+0051 020029           33                     LJMP    K1
+0054 B402D2           34             K3:     CJNE    A,#02H,K1
+0057 30B7FD           35                     JNB             KEY,$
+005A 02000E           36                     LJMP    START
+005D 758C3C           37     INT_T0: MOV     TH0,#(65536-50000)/256
+0060 758AB0           38                     MOV     TL0,#(65536-50000) MOD 256
+0063 0531             39                     INC             TCOUNT
+0065 E531             40                     MOV             A,TCOUNT
+0067 B4021B           41                     CJNE    A,#2,I2
+006A 753100           42                     MOV             TCOUNT,#00H     
+006D 0530             43                     INC             SECOND
+006F E530             44                     MOV             A,SECOND
+0071 B46403           45                     CJNE    A,#100,I1
+0074 753000           46                     MOV             SECOND,#00H
+0077 E530             47             I1:     MOV             A,SECOND
+0079 75F00A           48                     MOV             B,#10
+007C 84               49                     DIV             AB
+007D 93               50                     MOVC    A,@A+DPTR
+007E F580             51                     MOV             P0,A
+0080 E5F0             52                     MOV             A,B
+0082 93               53                     MOVC    A,@A+DPTR
+0083 F5A0             54                     MOV             P2,A
+0085 32               55             I2:     RETI                            
+0086 3F065B4F         56     TABLE:  DB              3FH,06H,5BH,4FH,66H,6DH,7DH,07H,7FH,6FH
+008A 666D7D07                
+008E 7F6F                    
+A51 MACRO ASSEMBLER  99S_CLOCK                                                            07/28/2006 17:25:02 PAGE     2
+
+0090 7E14             57     DELAY:  MOV             R6,#20
+0092 7FFA             58     D1:             MOV             R7,#250
+0094 DFFE             59                     DJNZ    R7,$
+0096 DEFA             60                     DJNZ    R6,D1
+0098 22               61                     RET
+                      62                     END     
+A51 MACRO ASSEMBLER  99S_CLOCK                                                            07/28/2006 17:25:02 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+B. . . . . . . . .  D ADDR   00F0H   A   
+D1 . . . . . . . .  C ADDR   0092H   A   
+DELAY. . . . . . .  C ADDR   0090H   A   
+I1 . . . . . . . .  C ADDR   0077H   A   
+I2 . . . . . . . .  C ADDR   0085H   A   
+IE . . . . . . . .  D ADDR   00A8H   A   
+INT_T0 . . . . . .  C ADDR   005DH   A   
+K1 . . . . . . . .  C ADDR   0029H   A   
+K2 . . . . . . . .  C ADDR   0044H   A   
+K3 . . . . . . . .  C ADDR   0054H   A   
+KCOUNT . . . . . .  N NUMB   0032H   A   
+KEY. . . . . . . .  B ADDR   00B0H.7 A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+P3 . . . . . . . .  D ADDR   00B0H   A   
+SECOND . . . . . .  N NUMB   0030H   A   
+START. . . . . . .  C ADDR   000EH   A   
+TABLE. . . . . . .  C ADDR   0086H   A   
+TCOUNT . . . . . .  N NUMB   0031H   A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . .  B ADDR   0088H.4 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

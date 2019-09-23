@@ -1,0 +1,104 @@
+A51 MACRO ASSEMBLER  TEXT3L                                                               08/07/2006 20:43:20 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.00
+OBJECT MODULE PLACED IN Text3l.OBJ
+ASSEMBLER INVOKED BY: e:\Program Files\Keil\C51\BIN\A51.EXE Text3l.asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG             00H
+0000 900061            2     START:  MOV             DPTR,#TAB1
+0003 7803              3                     MOV             R0,#03
+0005 7C00              4                     MOV             R4,#0
+0007 759003            5                     MOV             P1,#3
+                       6     
+000A 8890              7     WAIT:   MOV             P1,R0
+000C 7580FF            8                     MOV             P0,#0FFH
+000F 308008            9                     JNB             P0.0,POS
+0012 30810E           10                     JNB             P0.1,NEG
+0015 80F3             11                     SJMP    WAIT
+                      12     
+0017 208109           13     JUST:   JB              P0.1,NEG
+001A EC               14     POS:    MOV             A,R4
+001B 93               15                     MOVC    A,@A+DPTR
+001C F590             16                     MOV             P1,A
+001E 1154             17                     ACALL   DELAY
+0020 0C               18                     INC             R4
+0021 012D             19                     AJMP    KEY
+0023 7C06             20     NEG:    MOV             R4,#6
+0025 EC               21                     MOV             A,R4
+0026 93               22                     MOVC    A,@A+DPTR
+0027 F590             23                     MOV             P1,A
+0029 1154             24                     ACALL   DELAY
+                      25     ;               DEC             R4
+002B 012D             26                     AJMP    KEY
+                      27     
+                      28                                             
+002D 758003           29     KEY:    MOV             P0,#03H                         ;读键盘情况
+0030 E590             30                     MOV             A,P1                            
+0032 20800E           31                     JB              P0.0,FZ1
+0035 BC0802           32                     CJNE    R4,#8,LOOPZ                     ;是结束标志
+0038 7C00             33                     MOV             R4,#0
+003A EC               34     LOOPZ:  MOV             A,R4
+003B 93               35                     MOVC    A,@A+DPTR
+003C F590             36                     MOV             P1,A                            ;输出控制脉冲
+003E 1154             37                     ACALL   DELAY                           ;程序延时
+0040 0C               38                     INC             R4                              ;地址加1
+0041 012D             39                     AJMP    KEY
+0043 2081E7           40     FZ1:    JB              P0.1,KEY
+0046 BCFF02           41                     CJNE    R4,#255,LOOPF                   ;是结束标志
+0049 7C07             42                     MOV             R4,#7
+004B 1C               43     LOOPF:  DEC             R4
+004C EC               44                     MOV             A,R4
+004D 93               45                     MOVC    A,@A+DPTR
+004E F590             46                     MOV             P1,A                            ;输出控制脉冲
+0050 1154             47                     ACALL   DELAY                           ;程序延时
+0052 012D             48                     AJMP    KEY
+                      49     
+                      50     
+                      51     
+                      52     
+                      53             
+0054 7E05             54     DELAY:  MOV     R6,#5
+0056 7D80             55     DD1:    MOV     R5,#080H
+0058 7F00             56     DD2:    MOV     R7,#0
+005A DFFE             57     DD3:    DJNZ    R7,DD3
+005C DDFA             58                     DJNZ    R5,DD2
+A51 MACRO ASSEMBLER  TEXT3L                                                               08/07/2006 20:43:20 PAGE     2
+
+005E DEF6             59                     DJNZ    R6,DD1
+0060 22               60                     RET
+0061 0206040C         61     TAB1:   DB      02H,06H,04H,0CH,08H,09H,01H,03H ;正转模型资料
+0065 08090103                
+                      62                     END
+A51 MACRO ASSEMBLER  TEXT3L                                                               08/07/2006 20:43:20 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DD1. . . . . . . .  C ADDR   0056H   A   
+DD2. . . . . . . .  C ADDR   0058H   A   
+DD3. . . . . . . .  C ADDR   005AH   A   
+DELAY. . . . . . .  C ADDR   0054H   A   
+FZ1. . . . . . . .  C ADDR   0043H   A   
+JUST . . . . . . .  C ADDR   0017H   A   
+KEY. . . . . . . .  C ADDR   002DH   A   
+LOOPF. . . . . . .  C ADDR   004BH   A   
+LOOPZ. . . . . . .  C ADDR   003AH   A   
+NEG. . . . . . . .  C ADDR   0023H   A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+POS. . . . . . . .  C ADDR   001AH   A   
+START. . . . . . .  C ADDR   0000H   A   
+TAB1 . . . . . . .  C ADDR   0061H   A   
+WAIT . . . . . . .  C ADDR   000AH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

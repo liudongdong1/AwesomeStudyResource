@@ -1,0 +1,94 @@
+body {font-family:"ËÎÌו",serif;background:#fff; font-size:12px;}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,blockquote{padding:0; margin:0;}   
+table,td,tr,th{font-size:12px;}
+li{list-style-type:none;}
+img{border:none;}
+ol,ul {list-style:none;}
+caption,th {text-align:left;}   
+h1,h2,h3,h4,h5,h6 {font-size:12px; font-weight:normal;}   
+q:before,q:after {content:'';}   
+abbr,acronym {border:0;}
+.fB{font-weight:bold;}
+.fI{font-style: italic;}
+.f12px{font-size:12px;}
+.f14px{font-size:14px;}
+.left{float:left;}
+.right{float:right;}
+.hidden{display:none;}
+.tLeft{ text-align:left;}
+.tRight{ text-align:right;}
+.unLine,.unLine a{text-decoration:none;}
+.noBorder{border:none;}
+.tCenter{text-align:center;}
+.clear {clear:both;display:block;height:0; font-size:0; overflow:hidden;}
+
+.bbsarea{ margin: 0 2px; text-align: left; _zoom:1;min-height:0;}
+.bbsarea:after{content:".";display:block;clear:both;visibility:hidden;height:0;}
+
+.list12 li {background:transparent url(all.png) 0 -221px no-repeat;line-height:22px; width: 215px; overflow:hidden; padding:0 0 0 8px;white-space:nowrap;}
+
+/*forumSider*/
+.sidebox{ margin: 0 0 10px;}
+.sidebox h3{ line-height: 38px; background: url(dotline.png) bottom repeat-x; font-size:14px;font-weight: bold; padding: 0 0 0 10px; margin: 0 0 10px; }
+.sidebox p{ margin: 0 0 5px; line-height: 1.6; text-align: justify; }
+.sidebox .content {overflow:hidden; padding:0 11px 0 10px;}
+.forumSider .sidebox .content {width:145px;}
+.articleSider .sidebox .content{width:217px;}
+.sidebox .content li{ line-height: 1.6; }
+.sidebox .content li a:link{ color: #1e50a2; }
+.sidebox .content li a:hover{ color: #b00; }
+.sidebox .content li a:visited{ color: #83006F; }
+.sidebox .bzlist{ padding: 0 0 5px 10px; }
+.sidebox .tzlist li{ float: left; width: 49%; line-height: 1.8;  }
+.sidebox .ljlist li{ line-height: 1.8;  }
+.sidebox .topusrlist li{ width: 215px; height: 22px; line-height: 22px; overflow: hidden; vertical-align: middle; }
+.sidebox .topusrlist li span{ float: left; display: inline-block; margin: 0 8px 0 0; width: 13px; height: 13px; line-height: 13px; text-align: center; background: url(all.png) 0 -305px no-repeat; padding: 3px 0 0 0; font-size: 11px; color: #fff; font-family: Arial, Helvetica, sans-serif;font-weight: bold; }
+.sidebox .topusrlist li span.top{ background-position: 0 -305px; }
+.sidebox .topusrlist li em{ float: right; }
+.sidebox .toppagelist li { margin: 0 0 3px; }
+.sidebox .toppagelist li span{ color: #727171; margin: 0 5px 0 0; }
+.topusrlist li em{ font-style:normal }
+.sidebox .dotline_blue{display:block; height:1px; overflow:hidden;background:url(dotline.png) repeat-x; }
+.sidebox .moderator-apply{background:url(moderator_apply2.png) no-repeat 0px 4px; line-height:23px; padding-top:2px; padding-left:17px;}
+.sidebox .moderator-apply a:link{ color: #1e50a2; }
+.sidebox .moderator-apply a:hover{ color: #b00; }
+.sidebox .moderator-apply a:visited{ color: #83006F; }
+
+.articleCont .clip .sign span{ color: #666; display: block; background: #fff; width: 110px; padding: 0 3px; margin:0 0 5px 100px;  }
+.articleCont .clip .replylink{ text-align: right; display: block; clear: both; margin:15px 20px 15px 0; overflow: hidden; }
+.articleCont .clip .articleBottom {clear:both;display:block;font-size:1px;height:20px;overflow:hidden;}
+
+.articleCont .clip .quote{ overflow: hidden;  padding: 0 10px 0 20px; margin-bottom: 20px; }
+.articleCont .clip .quotefrom{ font-size: 12px; }
+.articleCont .clip .quoteblock{ background: #fafafa; color: #999; padding: 10px 5px; border: 1px solid #efefef; }
+.articleCont .clip .postreset{font-weight:normal;font-family:"ËÎÌו",serif;font-size:14px;background:#fff;color:#000;font-style:normal;text-decoration:none;}
+.clip ul li{list-style:disc inside;}
+.clip ol li{list-style:decimal inside;}
+
+
+/* Article Sider */
+.articleSider .sidebox h4{ font-size: 16px;font-weight: bold;margin-bottom: 10px; }
+.articleSider .sidebox .content a:link{ color: #2b2b2b; }
+.articleSider .sidebox .content a:hover{ color: #BA2636;}
+.articleSider .sidebox .content .list12pic{ width: 217px; }
+.articleSider .sidebox .content .list12pic h5{ overflow: hidden; width: 102px; height: 19px; }
+.list12pic li{ float: left; padding: 0 11px 10px 0; text-align: center; }
+.list12pic li.even{ padding-right:0; }
+.list12pic li img{ border: 1px solid #ccc; margin-bottom: 2px; }
+.articleSider .sidebox .content.activity img, .articleSider .sidebox .content.hottopic img{ border: 1px solid #ccc;  }
+.articleSider .sidebox .content.activity .list12 li, .articleSider .sidebox .content.hottopic .list12 li{ background: url(all.png) 0 -221px no-repeat; }
+.articleSider .sidebox .content.hottopic h4{ font-size:12px; }
+.articleSider .sidebox .content.hottopic img{ float: left; }
+.articleSider .sidebox .content.hottopic p{ margin: 0 0 0 110px; color: #727171; }
+
+
+.icon_magic { background: url(all1.png) no-repeat; height:18px; width: 64px; display:inline-block; overflow:hidden; }
+.icon_edit { background: url(all1.png) no-repeat 0px -28px; height:16px; width: 42px; display: inline-block; overflow:hidden; }
+.icon_quote { background: url(all1.png) no-repeat 0px -62px; height:16px; width: 42px; display:inline-block; overflow:hidden;  }
+.icon_reply { background: url(all1.png) no-repeat 0px -100px; height:16px; width: 42px; display:inline-block; overflow:hidden; }
+.icon_report { background: url(all1.png) no-repeat 0px -134px; height:16px; width: 42px; display:inline-block; overflow:hidden;  }
+.icon_ip { background: url(all1.png) no-repeat 0px -168px; height:16px; width: 16px; display:inline-block; overflow:hidden; }
+.icon_guanzhu { background: url(all1.png) no-repeat 0px -195px; height:22px; width: 16px; display:inline-block; overflow:hidden; }
+.icon_duanxin { background: url(all1.png) no-repeat -47px -195px; height:22px; width: 16px; display:inline-block; overflow:hidden; }
+.icon_liwu { background: url(all1.png) no-repeat 0px -236px; height:22px; width: 16px; display:inline-block; overflow:hidden; }
+.icon_jiayuan { background: url(all1.png) no-repeat -47px -236px; height:22px; width: 16px; display:inline-block; overflow:hidden; }

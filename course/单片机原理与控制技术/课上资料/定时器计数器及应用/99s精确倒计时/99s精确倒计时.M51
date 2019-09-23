@@ -1,0 +1,129 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        04/11/2012  19:13:29  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE 99s精确.obj TO 99s精确倒计时
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  99s精确.obj (99S精确)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?SCDIV)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  99s精确倒计时 (99S精确)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0002H     UNIT         ?DT?99S精确
+            IDATA   000AH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0004H     UNIT         ?C_INITSEG
+                    0007H     0004H                  *** GAP ***
+            CODE    000BH     0003H     ABSOLUTE     
+            CODE    000EH     008CH     UNIT         ?C_C51STARTUP
+            CODE    009AH     0049H     UNIT         ?PR?MAIN?99S精确
+            CODE    00E3H     0027H     UNIT         ?PR?TIME?99S精确
+            CODE    010AH     0022H     UNIT         ?C?LIB_CODE
+            CODE    012CH     000AH     UNIT         ?CO?99S精确
+
+
+
+OVERLAY MAP OF MODULE:   99s精确倒计时 (99S精确)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?99S精确
+  +--> ?C_INITSEG
+
+?PR?MAIN?99S精确
+  +--> ?CO?99S精确
+
+
+
+SYMBOL TABLE OF MODULE:  99s精确倒计时 (99S精确)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/11/2012  19:13:29  PAGE 2
+
+
+  -------         MODULE        99S精确
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  B:00A8H.7       PUBLIC        EA
+  D:00A8H         PUBLIC        IE
+  D:0008H         PUBLIC        ctime
+  D:00B8H         PUBLIC        IP
+  C:009AH         PUBLIC        main
+  C:00E3H         PUBLIC        time
+  D:0098H         PUBLIC        SCON
+  D:0089H         PUBLIC        TMOD
+  D:0088H         PUBLIC        TCON
+  C:012CH         PUBLIC        led
+  B:00A8H.1       PUBLIC        ET0
+  D:008CH         PUBLIC        TH0
+  D:008AH         PUBLIC        TL0
+  B:0088H.4       PUBLIC        TR0
+  D:00C8H         PUBLIC        T2CON
+  D:0009H         PUBLIC        i
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          MAIN
+  C:009AH         LINE#         7
+  C:009AH         LINE#         8
+  C:009AH         LINE#         9
+  C:009DH         LINE#         10
+  C:00A0H         LINE#         11
+  C:00A3H         LINE#         12
+  C:00A5H         LINE#         13
+  C:00A7H         LINE#         14
+  C:00A9H         LINE#         15
+  C:00A9H         LINE#         16
+  C:00A9H         LINE#         17
+  C:00C4H         LINE#         18
+  C:00E1H         LINE#         20
+  -------         ENDPROC       MAIN
+  -------         PROC          TIME
+  C:00E3H         LINE#         23
+  C:00E7H         LINE#         25
+  C:00EAH         LINE#         26
+  C:00EDH         LINE#         27
+  C:00EFH         LINE#         28
+  C:00F4H         LINE#         29
+  C:00F4H         LINE#         30
+  C:00F7H         LINE#         31
+  C:00F9H         LINE#         32
+  C:0102H         LINE#         33
+  C:0102H         LINE#         34
+  C:0105H         LINE#         35
+  C:0105H         LINE#         36
+  C:0105H         LINE#         37
+  -------         ENDPROC       TIME
+  -------         ENDMOD        99S精确
+
+  -------         MODULE        ?C?SCDIV
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/11/2012  19:13:29  PAGE 3
+
+
+  C:010AH         PUBLIC        ?C?SCDIV
+  -------         ENDMOD        ?C?SCDIV
+
+Program Size: data=11.0 xdata=0 code=306
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

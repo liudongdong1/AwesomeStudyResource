@@ -1,0 +1,90 @@
+A51 MACRO ASSEMBLER  TIMER_APPLICATION__2_                                                07/28/2006 16:15:42 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.00
+OBJECT MODULE PLACED IN Timer Application (2).OBJ
+ASSEMBLER INVOKED BY: e:\Program Files\Keil\C51\BIN\A51.EXE Timer Application (2).asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+  0030                 1     COUNT   EQU             30H
+  0031                 2     FLASH   EQU             31H
+0000                   3                     ORG             00H
+0000 800C              4                     SJMP    START
+000B                   5                     ORG             0BH                                                     ;定
+                             时器0中断入口
+000B 020024            6                     LJMP    INT_T0
+000E 753000            7     START:  MOV             COUNT,#00H
+0011 753100            8                     MOV             FLASH,#00H
+0014 758901            9                     MOV             TMOD,#01H                                       ;定时器工作
+                             方式1
+0017 758C3C           10                     MOV             TH0,#(65536-50000)/256          ;定时器初值
+001A 758AB0           11                     MOV             TL0,#(65536-50000) MOD 256
+001D 75A882           12                     MOV             IE,#82H                                         ;开中断
+0020 D28C             13                     SETB    TR0                                                     ;启动定时器
+0022 80FE             14                     SJMP    $                                                       ;等待中断
+0024 E530             15     INT_T0: MOV             A,COUNT
+0026 B40011           16                     CJNE    A,#00H,I1                                       ;D1闪烁
+0029 B290             17                     CPL             P1.0
+002B 0531             18                     INC             FLASH
+002D E531             19                     MOV             A,FLASH
+002F B42845           20                     CJNE    A,#40,RETUNE                            ;达到2秒?
+0032 753100           21                     MOV             FLASH,#00H
+0035 0530             22                     INC             COUNT
+0037 020077           23                     LJMP    RETUNE                                          ;D2闪烁
+003A B40111           24     I1:             CJNE    A,#01H,I2
+003D B291             25                     CPL             P1.1
+003F 0531             26                     INC             FLASH
+0041 E531             27                     MOV             A,FLASH
+0043 B42831           28                     CJNE    A,#40,RETUNE                            ;达到2秒?
+0046 753100           29                     MOV             FLASH,#00H
+0049 0530             30                     INC             COUNT
+004B 020077           31                     LJMP    RETUNE
+004E B40211           32     I2:             CJNE    A,#02H,I3                                       ;D3闪烁
+0051 B292             33                     CPL             P1.2
+0053 0531             34                     INC             FLASH
+0055 E531             35                     MOV             A,FLASH
+0057 B4281D           36                     CJNE    A,#40,RETUNE                            ;达到2秒?
+005A 753100           37                     MOV             FLASH,#00H
+005D 0530             38                     INC             COUNT
+005F 020077           39                     LJMP    RETUNE
+0062 B40312           40     I3:             CJNE    A,#03H,RETUNE                           ;D4闪烁
+0065 B293             41                     CPL             P1.3
+0067 0531             42                     INC             FLASH
+0069 E531             43                     MOV             A,FLASH
+006B B42809           44                     CJNE    A,#40,RETUNE                            ;达到2秒?
+006E 753100           45                     MOV             FLASH,#00H
+0071 753000           46                     MOV             COUNT,#00H
+0074 020077           47                     LJMP    RETUNE                                          
+0077 758C3C           48     RETUNE: MOV             TH0,#(65536-50000)/256
+007A 758AB0           49                     MOV             TL0,#(65536-50000) MOD 256
+007D 32               50                     RETI
+                      51                     END
+A51 MACRO ASSEMBLER  TIMER_APPLICATION__2_                                                07/28/2006 16:15:42 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+COUNT. . . . . . .  N NUMB   0030H   A   
+FLASH. . . . . . .  N NUMB   0031H   A   
+I1 . . . . . . . .  C ADDR   003AH   A   
+I2 . . . . . . . .  C ADDR   004EH   A   
+I3 . . . . . . . .  C ADDR   0062H   A   
+IE . . . . . . . .  D ADDR   00A8H   A   
+INT_T0 . . . . . .  C ADDR   0024H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+RETUNE . . . . . .  C ADDR   0077H   A   
+START. . . . . . .  C ADDR   000EH   A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . .  B ADDR   0088H.4 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

@@ -1,0 +1,103 @@
+BL51 BANKED LINKER/LOCATER V6.00                                                        08/07/2006  21:27:48  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.00, INVOKED BY:
+E:\PROGRAM FILES\KEIL\C51\BIN\BL51.EXE Step Motor.obj TO Step Motor
+
+
+INPUT MODULES INCLUDED:
+  Step Motor.obj (STEP_MOTOR)
+
+
+LINK MAP OF MODULE:  Step Motor (STEP_MOTOR)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0069H     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  Step Motor (STEP_MOTOR)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        STEP_MOTOR
+  C:0056H         SYMBOL        DD1
+  C:0058H         SYMBOL        DD2
+  C:005AH         SYMBOL        DD3
+  C:0054H         SYMBOL        DELAY
+  C:0043H         SYMBOL        FZ1
+  C:0017H         SYMBOL        JUST
+  C:002DH         SYMBOL        KEY
+  C:004BH         SYMBOL        LOOPF
+  C:003AH         SYMBOL        LOOPZ
+  C:0023H         SYMBOL        NEG
+  D:0080H         SYMBOL        P0
+  D:0090H         SYMBOL        P1
+  C:001AH         SYMBOL        POS
+  C:0000H         SYMBOL        START
+  C:0061H         SYMBOL        TAB1
+  C:000AH         SYMBOL        WAIT
+  C:0000H         LINE#         2
+  C:0003H         LINE#         3
+  C:0005H         LINE#         4
+  C:0007H         LINE#         5
+  C:000AH         LINE#         7
+  C:000CH         LINE#         8
+  C:000FH         LINE#         9
+  C:0012H         LINE#         10
+  C:0015H         LINE#         11
+  C:0017H         LINE#         13
+  C:001AH         LINE#         14
+  C:001BH         LINE#         15
+  C:001CH         LINE#         16
+  C:001EH         LINE#         17
+BL51 BANKED LINKER/LOCATER V6.00                                                      08/07/2006  21:27:48  PAGE 2
+
+
+  C:0020H         LINE#         18
+  C:0021H         LINE#         19
+  C:0023H         LINE#         20
+  C:0025H         LINE#         21
+  C:0026H         LINE#         22
+  C:0027H         LINE#         23
+  C:0029H         LINE#         24
+  C:002BH         LINE#         25
+  C:002DH         LINE#         28
+  C:0030H         LINE#         29
+  C:0032H         LINE#         30
+  C:0035H         LINE#         31
+  C:0038H         LINE#         32
+  C:003AH         LINE#         33
+  C:003BH         LINE#         34
+  C:003CH         LINE#         35
+  C:003EH         LINE#         36
+  C:0040H         LINE#         37
+  C:0041H         LINE#         38
+  C:0043H         LINE#         39
+  C:0046H         LINE#         40
+  C:0049H         LINE#         41
+  C:004BH         LINE#         42
+  C:004CH         LINE#         43
+  C:004DH         LINE#         44
+  C:004EH         LINE#         45
+  C:0050H         LINE#         46
+  C:0052H         LINE#         47
+  C:0054H         LINE#         49
+  C:0056H         LINE#         50
+  C:0058H         LINE#         51
+  C:005AH         LINE#         52
+  C:005CH         LINE#         53
+  C:005EH         LINE#         54
+  C:0060H         LINE#         55
+  -------         ENDMOD        STEP_MOTOR
+
+Program Size: data=8.0 xdata=0 code=105
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

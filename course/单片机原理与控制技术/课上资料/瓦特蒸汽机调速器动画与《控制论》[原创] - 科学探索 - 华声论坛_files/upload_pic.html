@@ -1,0 +1,371 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0045)http://bbs.voc.com.cn/upload_pic.html?fid=148 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=GBK">
+
+<title>图片上传</title>
+<meta http-equiv="pragma" content="no-cache"> 
+<meta http-equiv="Cache-Control" content="no-store, must-revalidate"> 
+<style type="text/css">
+body {background-color: #fff0e6; margin:0px;padding:0px}
+body, table, input, select, textarea, .maintable, .button, .altbg1, .altbg2 {font: 12px Tahoma,Verdana;}
+td {padding:2px;}
+</style>
+<script type="text/javascript">
+/*
+	advance multiple upload
+	desigend by ZhiwuShan
+	edit time: 2007/10/26
+*/
+if (top.location==self.location){top.location="/"}
+function ignoreError() {  return true;}
+window.onerror = ignoreError;
+
+var $ = function(objId){
+ 	if(!objId){return null; }
+	if(document.getElementById){
+		return eval('document.getElementById("' + objId + '")');
+	}else if(document.layers){
+		return eval("document.layers['" + objId +"']");
+	}else{
+		return eval('document.all.' + objId);
+	}
+ };
+
+var userAgent = navigator.userAgent.toLowerCase();
+var is_webtv = userAgent.indexOf('webtv') != -1;
+var is_kon = userAgent.indexOf('konqueror') != -1;
+var is_mac = userAgent.indexOf('mac') != -1;
+var is_saf = userAgent.indexOf('applewebkit') != -1 || navigator.vendor == 'Apple Computer, Inc.';
+var is_opera = userAgent.indexOf('opera') != -1 && opera.version();
+var is_moz = (navigator.product == 'Gecko' && !is_saf) && userAgent.substr(userAgent.indexOf('firefox') + 8, 3);
+var is_ns = userAgent.indexOf('compatible') == -1 && userAgent.indexOf('mozilla') != -1 && !is_opera && !is_webtv && !is_saf;
+var is_ie = (userAgent.indexOf('msie') != -1 && !is_opera && !is_saf && !is_webtv) && userAgent.substr(userAgent.indexOf('msie') + 5, 3);
+
+function findtags(parentobj, tag) {
+	if(!isUndefined(parentobj.getElementsByTagName)) {
+		return parentobj.getElementsByTagName(tag);
+	} else if(parentobj.all && parentobj.all.tags) {
+		return parentobj.all.tags(tag);
+	} else {
+		return null;
+	}
+}
+
+function getcookie(name) {
+	var cookie_start = document.cookie.indexOf(name);
+	var cookie_end = document.cookie.indexOf(";", cookie_start);
+	return cookie_start == -1 ? '' : document.cookie.substring(cookie_start + name.length + 1, (cookie_end > cookie_start ? cookie_end : document.cookie.length));
+}
+
+function setcookie(cookieName, cookieValue, seconds, path, domain, secure) {
+	var expires = new Date();
+	expires.setTime(expires.getTime() + seconds);
+	document.cookie = escape(cookieName) + '=' + escape(cookieValue)
+		+ (expires ? '; expires=' + expires.toGMTString() : '')
+		+ (path ? '; path=' + path : '/')
+		+ (domain ? '; domain=' + domain : '')
+		+ (secure ? '; secure' : '');
+}
+
+function in_array(needle, haystack) {
+	if(typeof needle == 'string') {
+		for(var i in haystack) {
+			if(haystack[i] == needle) {
+					return true;
+			}
+		}
+	}
+	return false;
+}
+
+function isUndefined(variable) {
+	return typeof variable == 'undefined' ? true : false;
+}
+//--------------------------------------------------------------------------------
+
+//解析html参数
+var pos,str,para,parastr,tempstr1;
+tempstr="";
+str = window.location.href;
+pos = str.indexOf("?")
+parastr = str.substring(pos+1);
+if (str.indexOf("=")>0){
+	para = parastr.split("&");
+	for(i=0;i<para.length;i++)	{
+		tempstr1 = para[i];
+		pos = tempstr1.indexOf("=");
+		//document.write (tempstr1.substring(0,pos));
+		//document.write ("<br>参数"+i+":"+tempstr1.substring(0,pos));
+		//document.write ("等于:"+tempstr1.substring(pos+1));
+		if(tempstr1.substring(0,pos) == "fid") {
+			var _fid = tempstr1.substring(pos+1);
+		}
+	}
+}
+
+var aid = 1;
+var getNum = 1;
+var thumbwidth = parseInt(400);
+var thumbheight = parseInt(300);
+var attachexts = new Array();
+var attachwh = new Array();
+var totlefile = -1;
+var nameArr = new Array();
+
+function delAttach(id) {
+$('attachbody').removeChild($('attach_' + id).parentNode.parentNode.parentNode.parentNode.parentNode);
+$('attachbody').innerHTML == '' && addAttach();
+$('localimgpreview_' + id + '_menu') ? document.body.removeChild($('localimgpreview_' + id + '_menu')) : null;
+autoResize();
+totlefile--;
+}
+
+function addAttach() {
+
+newnode = $('attachbodyhidden').firstChild.cloneNode(true);
+var id = aid;
+if(id==2){
+	$('up_td').style.width='180px';
+ 	// document.getElementsByName('up_td').style.width='200px';
+}
+ 
+ 	var tags;
+	tags = findtags(newnode, 'input');
+	for(i in tags) {
+		if(tags[i]){
+		if(tags[i].name == 'attach[]') {
+		tags[i].id = 'attach_' + id;
+		tags[i].onchange = function() {insertAttach(id)};
+		tags[i].unselectable = 'on';
+		}
+		if(tags[i].name == 'localid[]') {
+		tags[i].value = id;
+		}
+		}
+	}
+	tags = findtags(newnode, 'span');
+	for(i in tags) {
+		if(tags[i]){
+		if(tags[i].id == 'localfile[]') {
+		tags[i].id = 'localfile_' + id;
+		}
+			}
+	}
+	aid++;
+	getNum++;
+	$('attachbody').appendChild(newnode);
+	
+	totlefile++;
+	if(totlefile!=0 && totlefile%10==0) alert("您已经选择了"+totlefile+"个文件！如果选择的文件过多,可能会上传失败！选择完毕后点击【开始上传】");
+	
+	//隐藏按钮
+	var fujianLen = document.getElementsByName('fujian').length
+	for(var jj=0;jj<fujianLen;jj++){
+		document.getElementsByName('fujian').item(jj).style.display = "none";
+	}
+	document.getElementsByName('fujian').item(jj-1).style.display = "block";
+	autoResize();
+}
+
+function insertAttach(id) {
+	var localimgpreview = '';
+	$('attach_' + id).select();
+    if( $('attach_' + id).files && $('attach_' + id).files[0]){      
+        path = $('attach_' + id).value;         
+    } else {
+		path = $('attach_' + id).value;
+    	//path = document.selection.createRange().text; 
+    }
+//if(!path) path = $('attach_' + id).value;
+
+var extensions = 'gif, jpg, bmp, swf,png,jpeg';
+var ext = path.lastIndexOf('.') == -1 ? '' : path.substr(path.lastIndexOf('.') + 1, path.length).toLowerCase();
+var re = new RegExp("(^|\\s|,)" + ext + "($|\\s|,)", "ig");
+var localfile = $('attach_' + id).value.substr($('attach_' + id).value.replace(/\\/g, '/').lastIndexOf('/') + 1);
+nameArr[getNum] = localfile;
+for(var i = 0; i<getNum;i++){
+	if(nameArr[i]==localfile){
+		alert('提示：图片'+localfile+'重复上传');
+	}
+}
+ 
+if(path == '') {return;}
+if(extensions != '' && (re.exec(extensions) == null || ext == '')) {
+alert('只允许上传gif,jpg,png,bmp;swf类型的附件。');
+return;
+}
+attachexts[id] = is_ie && in_array(ext, ['gif', 'jpg', 'png', 'bmp','png']) && typeof supe == 'undefined' ? 2 : 1;
+
+//图片宽高获取
+if(attachexts[id] == 2) {
+$('img_hidden').alt = id;
+$('img_hidden').filters.item("DXImageTransform.Microsoft.AlphaImageLoader").sizingMethod = 'image';
+try {
+$('img_hidden').filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = path;
+} catch (e) {
+//alert('无效的图片文件。');
+//return;
+}
+var wh = {'w' : $('img_hidden').offsetWidth, 'h' : $('img_hidden').offsetHeight};
+var aid = $('img_hidden').alt;
+if(wh['w'] >= thumbwidth || wh['h'] >= thumbheight) {
+wh = thumbImg(wh['w'], wh['h']);
+}
+}
+
+
+$('localfile_' + id).innerHTML = '<a href="###delAttach" onclick="delAttach(' + id + ')" style=" line-height:22px;"><img src="/images/s.png" border="0" width="12" height="12"  ></a> ' +
+(attachexts[id] == 2 ? '<span class="smalltxt"></span> <a href="###attachment" onMouseOver="showPic(\''+path.replace(/\\/g, '/')+'\','+wh['w']+','+wh['h']+')" onMouseOut="oPopup.hide();">' + localfile+ '</a>' : '<span class="smalltxt">[' + id + ']</span> ' + localfile);
+$('attach_' + id).style.display = 'none';
+addAttach();
+}
+
+
+function thumbImg(w, h) {
+var x_ratio = thumbwidth / w;
+var y_ratio = thumbheight / h;
+var wh = new Array();
+
+if((x_ratio * h) < thumbheight) {
+wh['h'] = Math.ceil(x_ratio * h);
+wh['w'] = thumbwidth;
+} else {
+wh['w'] = Math.ceil(y_ratio * w);
+wh['h'] = thumbheight;
+}
+return wh;
+}
+
+function autoResize(){
+	
+	var minheight = 31;
+	try{
+		if(navigator.userAgent.indexOf("MSIE")>0){  
+			var targwin=parent.document.getElementById("upload_iframe");
+			targwin.style.height = minheight;
+			targwin.height = minheight;
+			targwin.style.height = typeof document.body.scrollHeight != 'undefined' && document.body.scrollHeight?document.body.scrollHeight:minheight;
+			targwin.height = 
+			typeof document.body.scrollHeight != 'undefined' && document.body.scrollHeight?document.body.scrollHeight:minheight;
+		} else{
+			var frm = parent.document.getElementById("upload_iframe");
+			frm.height = minheight;
+			var subWeb = parent.document.frames?parent.document.frames["upload_iframe"].document:frm.contentDocument;
+		}
+		
+		if(frm != null && subWeb != null){
+		frm.height = typeof subWeb.body.scrollHeight != 'undefined' && subWeb.body.scrollHeight>minheight?subWeb.body.scrollHeight:minheight;
+		
+		}
+	}catch(e){
+	//alert(e);
+	}
+}
+
+
+var oPopup = window.createPopup();
+function showPic(src,width,height) {
+	var lefter = event.clientX;
+	var leftoff = event.offsetX
+	var topper = event.clientY;
+	var topoff = event.offsetY;
+	var oPopBody = oPopup.document.body;
+	src = "file:\\\\\\"+src;
+	var HTMLContent = '<img  width='+width+' height='+height+' style="filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=\'scale\',src=\'' + src+'\');" src=\''+src+'\' border="0" alt="" />';
+	//var HTMLContent = "<img src=\"file:\\\""+src+"' width="+width+" height="+height+" style=\"filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale',src='" + src +"');\">";
+	//oPopBody.style.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod = scale,src='" + src + "')";  
+	//oPopBody.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").sizingMethod = 'image';
+   	//oPopBody.filters("DXImageTransform.Microsoft.AlphaImageLoader").src = src; 
+   	oPopBody.style.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod = scale,src='" + src + "')";
+	oPopBody.style.backgroundColor="#f1f1f1";
+	oPopBody.style.border="buttonshadow 1px solid";
+	oPopBody.style.overflowY="auto";
+	//oPopBody.onmouseout=golink;
+	oPopBody.innerHTML = HTMLContent;
+	//alert(width+"*"+height);
+	//var width = 200;
+	//var height = 200;
+	oPopup.show(lefter + 10 , topper - topoff + 20, width+2, height+2, document.body);
+	return false;
+}
+
+</script>
+<style type="text/css"></style></head>
+
+<body onkeydown="if(event.keyCode==27) return false;" onload="addAttach();autoResize();">
+<div id="img_hidden" alt="1" style="position:absolute;top:-100000px;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=&#39;image&#39;);width:400px;height:300px"></div>
+
+<script language="javascript">
+function openUploadWindow(){
+	document.getElementById('uploadInput').click();
+}
+//<form method="post" id="postform" action="?fid=76" enctype="multipart/form-data" >
+document.write('<form method="post" id="postform" action="upload_pic.php?fid='+_fid+'" enctype="multipart/form-data" style="padding:0px;margin:0px">');
+</script><form method="post" id="postform" action="http://bbs.voc.com.cn/upload_pic.php?fid=148" enctype="multipart/form-data" style="padding:0px;margin:0px">
+<table width="100%" cellpadding="0" cellspacing="0" class="editor_button"><tbody><tr>
+<td style="width: 108px" id="up_td">
+<table cellspacing="0" cellpadding="0" border="0">
+<tbody id="attachbodyhidden" style="display:none"><tr class="row1">
+<td nowrap="nowrap">
+<div><div style="float:left">
+<input type="image" value="添加附件" id="inputButton" src="sctp.gif" name="fujian" style="display: none;"></div>
+<div style="float:left;  margin:0; padding:0;margin-left:-85px; overflow:hidden;width:85px;"><div><input id="uploadInput" name="attach[]" type="file" style="filter:alpha(opacity=0); width:80px;opacity:0.0; background-color:#0CF; padding:0; margin:0;" onclick="return checkLogin()"></div></div>
+  </div>
+ <span id="localfile[]"></span><input type="hidden" name="localid[]"></td>
+</tr></tbody>
+<tbody id="attachbody"><tr class="row1">
+<td nowrap="nowrap">
+<div><div style="float:left">
+<input type="image" value="添加附件" id="inputButton" src="sctp.gif" name="fujian" style="display: block;"></div>
+<div style="float:left;  margin:0; padding:0;margin-left:-85px; overflow:hidden;width:85px;"><div><input id="attach_1" name="attach[]" type="file" style="filter:alpha(opacity=0); width:80px;opacity:0.0; background-color:#0CF; padding:0; margin:0;" onclick="return checkLogin()"></div></div>
+  </div>
+ <span id="localfile_1"></span><input type="hidden" name="localid[]" value="1"></td>
+</tr></tbody>
+</table>
+</td>
+<td style="padding-top:5px;">
+<input type="hidden" name="act" value="upload">
+<input type="image" src="kssc.gif" name="dosubmit" onclick="return checkLogin_1(this)" style="color: red">
+限jpg，jpeg，bmp，png，gif，swf格式，图片大小不超过800K，swf限3M。(<a href="http://bbs.voc.com.cn/topic-4938586-1-1.html" target="_blank" style="text-decoration:none">发图有问题请猛戳</a>)
+</td>
+</tr>
+</tbody></table>
+<script language="javascript">
+document.write('</form>');
+function checkLogin(){
+	var getname = fetch_curent_uid();
+	if(getname == ''||getname == null){
+		parent.check_uid();
+		return false;
+	}
+	return true;	
+}
+function checkLogin_1(obj){
+	var getname = fetch_curent_uid();
+	if(getname == ''||getname == null){
+		parent.check_uid();
+		return false;
+	}else{
+		obj.disabled=true;
+		//obj.form.submit();
+document.getElementById('postform').submit();
+	}
+	return true;
+}
+
+function fetch_curent_uid(){
+	var uid = '';
+	jQuery.ajax({
+	   type: "POST",
+	   url: "/ajax.php",
+	   data: "action=currentuid",
+	   success: function(msg){		 
+	     if(parseInt(msg)>0){
+	    	 uid = msg;
+	     }
+	   }
+	});
+	return uid;
+}
+</script></form>
+</body></html>
