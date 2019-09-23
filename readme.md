@@ -1,5 +1,5 @@
 Create this repository for sharing what i've learned in JLU university.Here is my course structure organised by own thought.
-![course structure](https://github.com/liudongdong1/StudyResource/blob/master/assets/Course%20Outline.png)
+![course structure](https://github.com/liudongdong1/AwesomeStudyResource/blob/master/assets/Course%20Outline.png)
 And for each course i have made a xmind picture to highly summarise the main point,such as computer system structure:
 
 ![计算机系统结构](https://github.com/liudongdong1/AwesomeStudyResource/blob/master/assets/计算机系统结构.jpg)
